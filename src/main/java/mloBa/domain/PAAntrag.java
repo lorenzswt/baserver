@@ -1,4 +1,6 @@
 package mloBa.domain;
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,51 +14,33 @@ import mloBa.domain.person.Student;
 
 @Entity
 @Table(name = "PAAntrag")
-public class PAAntrag {
+public class PAAntrag implements Serializable{
+	
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@Column(nullable = false)
-	private String firstName;
-
-	@Column(nullable = false)
-	private String lastName;
-
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="student_id", nullable=true)
 	private Student student;
 	
+	@Column(nullable = true)
+	private String caseNote;
+	
 	private PAAntrag() {}
-
-	public PAAntrag(String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-
+	
+	public PAAntrag(Student student, String caseNote) {
+		this.student = student;
+		this.caseNote = caseNote;
 	}
 
+
+	// setters and getters
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 	
 	public Student getStudent() {
@@ -66,6 +50,13 @@ public class PAAntrag {
 	public void setStudent (Student newStudent) {
 		this.student =  newStudent;
 	}
-	// setters and getters
+	
+	public String getCaseNote () {
+		return this.caseNote;
+	}
+	
+	public void setCaseNote (String caseNote) {
+		this.caseNote = caseNote;
+	}
 
 }
