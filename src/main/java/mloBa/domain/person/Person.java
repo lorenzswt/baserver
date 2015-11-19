@@ -34,69 +34,12 @@ public abstract class Person {
 	@Column(nullable = false)
 	private String lastName;
 	
-	@Column(nullable = true)
 	private String email;
 	
 	private String birthName;
 	
 	private Date birthDate;
 	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getBirthName() {
-		return birthName;
-	}
-
-	public void setBirthName(String birthName) {
-		this.birthName = birthName;
-	}
-
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public String getTelNr() {
-		return telNr;
-	}
-
-	public void setTelNr(String telNr) {
-		this.telNr = telNr;
-	}
-
-	public String getTelMobileNr() {
-		return telMobileNr;
-	}
-
-	public void setTelMobileNr(String telMobileNr) {
-		this.telMobileNr = telMobileNr;
-	}
-
-	public CivilStatus getCivilStatus() {
-		return civilStatus;
-	}
-
-	public void setCivilStatus(CivilStatus civilStatus) {
-		this.civilStatus = civilStatus;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
 	private String telNr;
 	
 	private String telMobileNr;
@@ -109,7 +52,7 @@ public abstract class Person {
 	@JoinColumn(name="address_id", nullable=true)
 	private Address address;
 	
-	public Person() {}
+	private Person() {}
 
 	public Person(String firstName, String lastName, CivilStatus civilStatus) {
 		this.firstName = firstName;
